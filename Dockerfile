@@ -1,4 +1,4 @@
-FROM openjdk:11.0.1-jdk-oracle
+FROM openjdk:11.0.3-jdk-stretch
 
 MAINTAINER foxiswho@gmail.com
 
@@ -9,6 +9,8 @@ ARG port
 ENV IP ${ip:-localhost}
 #ip
 ENV PORT ${port:-8080}
+
+ENV JAVA_OPT=""
 
 # opt home
 ENV PROGRAM_HOME  /opt
@@ -37,6 +39,8 @@ RUN java -version
 EXPOSE ${PORT}
 
 
+CMD java ${JAVA_OPT} -jar --version
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD java ${JAVA_OPT} -jar --version
+
