@@ -24,3 +24,12 @@ args
 /opt/logs
 
 
+
+例如：`/provider/app.jar` 文件位置
+
+```bash
+docker run -it --rm -p 8080:8080 \
+-e JAVA_OPT_EXT=" -jar /opt/app.jar --spring.profiles.active=dev -Pdev" \
+-v /provider:/opt \
+foxiswho/java
+```
