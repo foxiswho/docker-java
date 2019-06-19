@@ -18,8 +18,11 @@ ENV PROGRAM_APP  /opt
 ENV PROGRAM_LOGS  /opt/logs
 
 RUN rm -rf /etc/localtime \
-&& ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&& ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+&& echo "Asia/Shanghai" > /etc/localtime
 
+
+USER root
 
 RUN mkdir -p ${PROGRAM_LOGS} && mkdir -p ${PROGRAM_APP}
 
