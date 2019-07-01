@@ -72,4 +72,10 @@ JAVA_OPT="${JAVA_OPT} -Djava.security.egd=file:/dev/./urandom"
 JAVA_OPT="${JAVA_OPT} ${JAVA_OPT_EXT}"
 JAVA_OPT="${JAVA_OPT} -cp ${CLASSPATH}"
 
+echo "JAVA_OPT"
+echo "JAVA_OPT"
+echo "JAVA_OPT"
+echo "JAVA_OPT"
+echo "JAVA_OPT= ${JAVA_OPT}"
+
 $JAVA ${JAVA_OPT} $@
