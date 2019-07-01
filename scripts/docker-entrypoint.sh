@@ -57,7 +57,10 @@ Xms=$MAX_POSSIBLE_HEAP
 Xmx=$MAX_POSSIBLE_HEAP
 Xmn=$[MAX_POSSIBLE_HEAP/2]
 # Set for `JAVA_OPT`.
-JAVA_OPT="${JAVA_OPT} -server -Xms${Xms} -Xmx${Xmx} -Xmn${Xmn}"
+JAVA_OPT="${JAVA_OPT} -server "
+if [ x"${MAX_POSSIBLE_HEAP_AUTO}" = "auto" ];then
+    JAVA_OPT="${JAVA_OPT} -Xms${Xms} -Xmx${Xmx} -Xmn${Xmn}"
+fi
 #-XX:+UseCMSCompactAtFullCollection
 #JAVA_OPT="${JAVA_OPT} -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 "
 #JAVA_OPT="${JAVA_OPT} -verbose:gc -Xloggc:/dev/shm/rmq_srv_gc.log -XX:+PrintGCDetails"
