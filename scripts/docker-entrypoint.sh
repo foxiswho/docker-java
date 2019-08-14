@@ -58,7 +58,7 @@ Xmx=$MAX_POSSIBLE_HEAP
 Xmn=$[MAX_POSSIBLE_HEAP/2]
 # Set for `JAVA_OPT`.
 JAVA_OPT="${JAVA_OPT} -server "
-if [ x"${MAX_POSSIBLE_HEAP_AUTO}" = "auto" ];then
+if [ x"${MAX_POSSIBLE_HEAP_AUTO}" = x"auto" ];then
     JAVA_OPT="${JAVA_OPT} -Xms${Xms} -Xmx${Xmx} -Xmn${Xmn}"
 fi
 #-XX:+UseCMSCompactAtFullCollection
