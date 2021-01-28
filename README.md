@@ -17,11 +17,11 @@ args
 
 目录
 
-/opt
+/root
 
 日志目录
 
-/opt/logs
+/root/logs
 
 
 
@@ -29,7 +29,7 @@ args
 
 ```bash
 docker run -it --rm -p 8080:8080 \
--e JAVA_OPT_EXT=" -jar /opt/app.jar --spring.profiles.active=dev -Pdev" \
--v /provider:/opt \
+-e JAVA_OPT_EXT=" -jar /root/app.jar --spring.profiles.active=dev -Pdev" \
+-v /provider/app.jar:/root/app.jar \
 foxiswho/java
 ```
