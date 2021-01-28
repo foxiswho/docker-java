@@ -13,9 +13,9 @@ ENV PORT ${port:-8080}
 ENV JAVA_OPT=""
 
 # opt home
-ENV PROGRAM_HOME  /opt
-ENV PROGRAM_APP  /opt
-ENV PROGRAM_LOGS  /opt/logs
+ENV PROGRAM_HOME  /root
+ENV PROGRAM_APP  /root
+ENV PROGRAM_LOGS  /root/logs
 
 
 # add scripts
