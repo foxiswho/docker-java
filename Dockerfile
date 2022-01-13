@@ -1,4 +1,4 @@
-FROM openjdk:11.0.3-jdk-stretch
+FROM openjdk:17-jdk-slim-buster
 
 MAINTAINER foxiswho@gmail.com
 
