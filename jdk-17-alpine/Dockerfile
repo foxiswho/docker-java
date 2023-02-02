@@ -1,5 +1,5 @@
 #指定基础镜像
-FROM openjdk:17-slim-buster
+FROM alpine:3.17
 
 MAINTAINER foxiswho@gmail.com
 
@@ -10,20 +10,20 @@ COPY scripts/* /usr/local/bin/
 
 USER root
 
-RUN  apt update \
-&& apt install curl -y \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+&& apk update upgrade --allow-untrusted \
+&& apk add --no-cache --virtual .build-deps binutils busybox curl bash tzdata \
+&& apk add ttf-dejavu \
 && rm -rf /etc/localtime \
 && ln -s /usr/share/zoneinfo/${TZ} /etc/localtime \
 && echo ${TZ} > /etc/timezone \
 && echo "export LANG=${LANG}" > /etc/profile.d/locale.sh \
+&& apk del tzdata .build-deps \
 && mkdir -p ${PROGRAM_LOGS} \
-&& apt clean -y && \   
-  rm -rf \
-  /var/cache/debconf/* \
-  /var/lib/apt/lists/* \
-  /var/log/* \
-  /var/tmp/* \
-&& rm -rf /tmp/*
+&& apk add --no-cache --virtual openjdk17 openjdk17-jdk openjdk17-jmods \
+&& rm -rf /var/cache/apk/* \
+&& rm -rf /root/.cache \
+&& rm -rf /tmp/* \
 
 VOLUME ${PROGRAM_LOGS}
 
